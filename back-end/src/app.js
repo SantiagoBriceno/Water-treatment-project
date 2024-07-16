@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import clientesRouter from './routes/v1/clientes.routes.js'
 import serviciosRouter from './routes/v1/servicios.routes.js'
+import facturaRouter from './routes/v1/facturas.routes.js'
 
 pool()
 
