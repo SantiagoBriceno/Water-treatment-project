@@ -1,4 +1,4 @@
-import service from '../../services/v1/factura.service'
+import service from '../../services/v1/factura.service.js'
 
 export const getAllFacturas = async (req, res) => {
   try {
