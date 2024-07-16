@@ -12,5 +12,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/api/v1/clientes', clientesRouter)
 app.use('/api/v1/servicios', serviciosRouter)
+app.use('/api/v1/facturas', facturaRouter)
 
 export default app
