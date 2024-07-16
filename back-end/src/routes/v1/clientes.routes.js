@@ -7,7 +7,7 @@ router.get('/', getAllClientes)
 router.get('/:id', getClienteById)
 router.get('/documento/:documento', getClienteByDocumento)
 router.post('/', postCliente)
-router.put('/:id', updateCliente)
+router.patch('/:id', updateCliente)
 router.delete('/:id', deleteCliente)
 
 export default router

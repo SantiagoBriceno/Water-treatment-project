@@ -6,7 +6,7 @@ const router = Router()
 router.get('/', getAllServicios)
 router.get('/:id', getServicioById)
 router.post('/', postServicio)
-router.put('/:id', updateServicio)
+router.patch('/:id', updateServicio)
 router.delete('/:id', deleteServicio)
 
 export default router
