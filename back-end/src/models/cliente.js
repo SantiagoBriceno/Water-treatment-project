@@ -1,11 +1,3 @@
-/*
-id (autoincremental)
-rif/cedula
-Nombre y apellido
-tlf
-direccion (opcional)
-*/
-
 import { Schema, model } from 'mongoose'
 
 const clienteSchema = new Schema({
