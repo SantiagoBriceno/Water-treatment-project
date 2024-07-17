@@ -9,6 +9,15 @@ export const getAllClientes = async (req, res) => {
   }
 }
 
+export const getAllClientesPartials = async (req, res) => {
+  try {
+    const clientes = await service.getAllClientesPatials(req.query.page, req.query.limit)
+    res.status(200).json(clientes)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export const getClienteById = async (req, res) => {
   try {
     const cliente = await service.getClienteById(req.params.id)

@@ -5,6 +5,14 @@ const getAllClientes = async () => {
   return clientes
 }
 
+// Clientes paginados
+const getAllClientesPatials = async (page, limit) => {
+  const clientes = await Cliente.find()
+    .skip((page - 1) * limit)
+    .limit(limit)
+  return clientes
+}
+
 const getClienteById = async (id) => {
   const cliente = await Cliente.findById(id)
   return cliente
@@ -32,6 +40,7 @@ const deleteCliente = async (id) => {
 
 export default {
   getAllClientes,
+  getAllClientesPatials,
   getClienteById,
   getClienteByDocumento,
   postCliente,
