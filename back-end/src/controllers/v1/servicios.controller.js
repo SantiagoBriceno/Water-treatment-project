@@ -9,6 +9,15 @@ export const getAllServicios = async (req, res) => {
   }
 }
 
+export const getAllServiciosPaginated = async (req, res) => {
+  try {
+    const servicios = await service.getAllServiciosPaginated(req.query.page, req.query.limit)
+    res.status(200).json(servicios)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export const getServicioById = async (req, res) => {
   try {
     const servicio = await service.getServicioById(req.params.id)

@@ -5,6 +5,13 @@ const getAllServicios = async () => {
   return servicios
 }
 
+const getAllServiciosPartials = async (page, limit) => {
+  const servicios = await Servicio.find()
+    .skip((page - 1) * limit)
+    .limit(limit)
+  return servicios
+}
+
 const getServicioById = async (id) => {
   const servicio = await Servicio.findById(id)
   return servicio
@@ -27,6 +34,7 @@ const deleteServicio = async (id) => {
 
 export default {
   getAllServicios,
+  getAllServiciosPartials,
   getServicioById,
   postServicio,
   updateServicio,
