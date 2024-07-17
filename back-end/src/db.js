@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import { MONGO_URI } from './config/config.js'
-console.log(MONGO_URI)
 
 export const pool = () => {
   mongoose.connect(MONGO_URI)
