@@ -5,6 +5,13 @@ const getAllFacturas = async () => {
   return facturas
 }
 
+const getAllFacturasPartial = async (page, limit) => {
+  const facturas = await Factura.find()
+    .skip((page - 1) * limit)
+    .limit(limit)
+  return facturas
+}
+
 const getFacturaById = async (id) => {
   const factura = await Factura.findById(id)
   return factura
@@ -27,6 +34,7 @@ const deleteFactura = async (id) => {
 
 export default {
   getAllFacturas,
+  getAllFacturasPartial,
   getFacturaById,
   postFactura,
   updateFactura,

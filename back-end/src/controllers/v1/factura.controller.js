@@ -9,6 +9,15 @@ export const getAllFacturas = async (req, res) => {
   }
 }
 
+export const getAllFacturasPaginated = async (req, res) => {
+  try {
+    const facturas = await service.getAllFacturasPaginated(req.query.page, req.query.limit)
+    res.status(200).json(facturas)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export const getFacturaById = async (req, res) => {
   try {
     const factura = await service.getFacturaById(req.params.id)
