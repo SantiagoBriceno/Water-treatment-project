@@ -23,8 +23,7 @@ import {
   FiUser,
   FiBox,
   FiMenu,
-  FiBell,
-  FiChevronDown
+  FiBell
 } from 'react-icons/fi'
 
 import { NavLink, Outlet } from 'react-router-dom'
