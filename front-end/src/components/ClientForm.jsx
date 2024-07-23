@@ -31,7 +31,8 @@ export default function () {
               {
                 required: 'Este campo es requerido',
                 minLength: { value: 3, message: 'El nombre debe tener al menos 3 caracteres' },
-                maxLength: { value: 50, message: 'El nombre no debe tener más de 50 caracteres' }
+                maxLength: { value: 50, message: 'El nombre no debe tener más de 50 caracteres' },
+                pattern: { value: /^[a-zA-Z\s]*$/, message: 'El nombre solo puede contener letras y espacios' }
               }
             )
           }}
