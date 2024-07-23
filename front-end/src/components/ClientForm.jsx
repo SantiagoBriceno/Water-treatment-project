@@ -1,24 +1,18 @@
 import { useForm } from 'react-hook-form'
 import { Button, Heading, FormControl, FormErrorMessage, FormLabel, Input, InputLeftAddon, InputGroup, Select } from '@chakra-ui/react'
+import { useClients } from '../hooks/useClients'
 import MyInput from './form/MyInput'
 
 export default function () {
   const { register, handleSubmit, formState: { errors } } = useForm()
-
-  const onSubmit = (values) => {
-    console.log(values)
-  }
-
-  const onError = () => {
-    console.log(Object.keys(errors))
-  }
-
+  const { onSubmit, data } = useClients()
+  console.log(data)
   return (
     <>
       <Heading>
         Nuevo cliente
       </Heading>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {/* Nombre del cliente */}
         <MyInput
           id='nombre'
