@@ -3,7 +3,6 @@ import { Schema, model } from 'mongoose'
 const clienteSchema = new Schema({
   documento: {
     type: String,
-    required: true,
     unique: true
   },
   nombre: {
