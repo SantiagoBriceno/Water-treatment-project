@@ -2,11 +2,11 @@ import { useForm } from 'react-hook-form'
 import { Button, Heading, FormControl, FormErrorMessage, FormLabel, Input, InputLeftAddon, InputGroup, Select } from '@chakra-ui/react'
 import { useClients } from '../hooks/useClients'
 import MyInput from './form/MyInput'
+import clientObjectValidator from '../validators/clientObjectValidator'
 
 export default function () {
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { onSubmit, data } = useClients()
-  console.log(data)
+  const { onSubmit } = useClients()
   return (
     <>
       <Heading>
@@ -22,12 +22,7 @@ export default function () {
           errorMessage={errors.nombre && errors.nombre.message}
           formProps={{
             ...register('nombre',
-              {
-                required: 'Este campo es requerido',
-                minLength: { value: 3, message: 'El nombre debe tener al menos 3 caracteres' },
-                maxLength: { value: 50, message: 'El nombre no debe tener más de 50 caracteres' },
-                pattern: { value: /^[a-zA-Z\s]*$/, message: 'El nombre solo puede contener letras y espacios' }
-              }
+              clientObjectValidator.nombre
             )
           }}
         />
@@ -43,11 +38,7 @@ export default function () {
             </InputLeftAddon>
             <Input
               {...register('documento',
-                {
-                  required: 'Este campo es requerido',
-                  minLength: { value: 6, message: 'El documento debe tener al menos 6 caracteres' },
-                  maxLength: { value: 10, message: 'El documento no debe tener más de 10 caracteres' }
-                }
+                clientObjectValidator.documento
               )}
             />
           </InputGroup>
@@ -62,10 +53,7 @@ export default function () {
           errorMessage={errors.telefono && errors.telefono.message}
           formProps={{
             ...register('telefono',
-              {
-                minLength: { value: 7, message: 'El teléfono debe tener al menos 7 caracteres' },
-                maxLength: { value: 15, message: 'El teléfono no debe tener más de 15 caracteres' }
-              }
+              clientObjectValidator.telefono
             )
           }}
         />
