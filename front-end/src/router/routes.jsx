@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+import { loaderClient } from './loaderClient'
 import HeaderSidebar from '../components/partials/Header-sidebar'
 import HomeView from '../views/Home.view'
 import FacturacionView from '../views/Facturacion.view'
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/clientes',
+        loader: loaderClient,
         element: <ClientesView />
       }
     ]
