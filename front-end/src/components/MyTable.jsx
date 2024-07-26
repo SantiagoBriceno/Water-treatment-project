@@ -3,7 +3,7 @@ import { Table, Text, Td, Tr, Thead, Tbody, Th, Tfoot, Heading, VStack, HStack, 
 export default function ({ data, dataAtributes, paginate }) {
   return (
 
-    <VStack p={4} bg='white' boxShadow='md' rounded='md' w='100%'>
+    <VStack p={4} bg='white' boxShadow='md' rounded='md' w='75%'>
       <Heading textAlign='center'>Clientes</Heading>
       <Divider borderColor='gray.400' />
       <Table colorScheme='gray'>
