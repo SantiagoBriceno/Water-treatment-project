@@ -3,15 +3,13 @@ import MyTable from '../components/MyTable'
 import { useClients } from '../hooks/useClients'
 import MyClientContainer from '../components/MyClientContainer'
 
-const bodyAtribute = ['nombre', 'documento', 'telefono']
-
 export default function () {
-  const { data, onSubmit } = useClients()
+  const { data, onSubmit, CLIENT_ATRIBUTES, paginate } = useClients()
   return (
     <MyClientContainer>
       <ClientForm onSubmit={onSubmit} />
-      {(data.length !== 0 && bodyAtribute.length !== 0)
-        ? <MyTable data={data} headers={bodyAtribute} dataAtributes={bodyAtribute} />
+      {(data.length !== 0 && CLIENT_ATRIBUTES.length !== 0)
+        ? <MyTable data={data} dataAtributes={CLIENT_ATRIBUTES} paginate={paginate} />
         : <p>Cargando...</p>}
 
     </MyClientContainer>

@@ -1,15 +1,15 @@
-import { Table, Td, Tr, Thead, Tbody, Th, Tfoot, Heading, VStack, HStack, Button, Divider } from '@chakra-ui/react'
+import { Table, Text, Td, Tr, Thead, Tbody, Th, Tfoot, Heading, VStack, HStack, Button, Divider } from '@chakra-ui/react'
 
-export default function ({ headers, data, dataAtributes, paginatedFunction }) {
+export default function ({ data, dataAtributes, paginate }) {
   return (
 
-    <VStack p={4} bg='gray.200' boxShadow='md' rounded='md' w='100%'>
+    <VStack p={4} bg='white' boxShadow='md' rounded='md' w='100%'>
       <Heading textAlign='center'>Clientes</Heading>
       <Divider borderColor='gray.400' />
       <Table colorScheme='gray'>
-        <HeaderTable headers={headers} />
+        <HeaderTable headers={dataAtributes} />
         <BodyTable dataAtributes={dataAtributes} data={data} />
-        <ButtonsTable colSpan={dataAtributes.length} />
+        <ButtonsTable paginate={paginate} colSpan={dataAtributes.length} />
       </Table>
     </VStack>
 
@@ -43,16 +43,20 @@ const BodyTable = ({ data, dataAtributes }) => {
   )
 }
 
-const ButtonsTable = ({ colSpan }) => {
+const ButtonsTable = ({ colSpan, paginate }) => {
+  console.log(paginate)
   return (
     <Tfoot>
       <Tr>
         <Td colSpan={colSpan}>
           <HStack justifyContent='flex-end'>
-            <Button _hover={{ background: 'gray.300' }}>
+            <Button onClick={paginate.handlePage} id='previous' _hover={{ background: 'gray.300' }}>
               Anterior
             </Button>
-            <Button _hover={{ background: 'gray.300' }}>
+            <Text>
+              {paginate.currentPage} / {paginate.totalPages}
+            </Text>
+            <Button onClick={paginate.handlePage} id='next' _hover={{ background: 'gray.300' }}>
               Siguiente
             </Button>
           </HStack>

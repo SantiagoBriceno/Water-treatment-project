@@ -6,6 +6,12 @@ export const getClientes = async () => {
   return data
 }
 
+export const getPaginatedClientes = async (page, pageSize) => {
+  const response = await fetch(`${RUTA_CLIENTS}/partials?page=${page}&limit=${pageSize}`)
+  const data = await response.json()
+  return data
+}
+
 export const getClienteById = async (id) => {
   const response = await fetch(`${RUTA_CLIENTS}/${id}`)
   const data = await response.json()
