@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form'
 import { Button, Heading, FormControl, FormErrorMessage, FormLabel, Input, InputLeftAddon, InputGroup, Select, Stack, Divider, Grid } from '@chakra-ui/react'
-import { useClients } from '../hooks/useClients'
 import MyInput from './form/MyInput'
 import clientObjectValidator from '../validators/clientObjectValidator'
 
