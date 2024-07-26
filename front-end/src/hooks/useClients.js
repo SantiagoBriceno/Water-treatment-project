@@ -8,7 +8,7 @@ export const useClients = ({ clientes }) => {
 
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const [pageSize] = useState(2)
+  const [pageSize] = useState(5)
 
   // PARA TRAER A TODOS LOS CLIENTES
   // useEffect(() => {
@@ -22,7 +22,7 @@ export const useClients = ({ clientes }) => {
       console.log(response)
       setData(response)
       // MODIFICAR
-      setTotalPages(2)
+      setTotalPages(1)
       // setTotalPages(response.totalPages)
     })
   }, [currentPage, pageSize])
