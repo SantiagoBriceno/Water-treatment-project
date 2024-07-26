@@ -7,7 +7,7 @@ import clientObjectValidator from '../validators/clientObjectValidator'
 export default function ({ onSubmit }) {
   const { register, handleSubmit, formState: { errors } } = useForm()
   return (
-    <Stack p={4} bg='gray.200' boxShadow='md' rounded='md' w='30%'>
+    <Stack p={4} bg='white' boxShadow='md' rounded='md' w='30%'>
       <Heading textAlign='center'>
         Nuevo cliente
       </Heading>
