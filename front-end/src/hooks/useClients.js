@@ -18,6 +18,9 @@ export const useClients = ({ clientes }) => {
   // CLIENTES PAGINADOS
 
   useEffect(() => {
+    if (currentPage === 1) {
+      return
+    }
     getPaginatedClientes(currentPage, pageSize).then((response) => {
       console.log(response)
       setData(response)
