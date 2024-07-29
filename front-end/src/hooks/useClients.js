@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import { createCliente, getPaginatedClientes } from '../service/cliente'
+import { useToast } from '@chakra-ui/react'
 import { CLIENT_ATRIBUTES } from '../config/config'
+import clientToast from '../utils/MyToast'
 export const useClients = ({ clientes }) => {
   const [data, setData] = useState(clientes.clientes)
   const [firstRender, setFirstRender] = useState(true)
+  const toast = useToast()
 
   // Para paginación en tabla
 
@@ -52,8 +55,20 @@ export const useClients = ({ clientes }) => {
     }
 
     createCliente(newClient).then((response) => {
-      console.log(response)
-      console.log(response.message[0].msg)
+      const { data, status } = response
+      if (status === 201) { // EXITO
+        const { message } = data
+        clientToast(toast, status, message)
+      } else if (status === 400) { // CASO QUE EXPRESS VALIDATOR DEVUELVA ERRORES
+        const { errors } = data
+        const cantErrors = errors.length
+        clientToast(toast, status, `Se encontraron ${cantErrors} errores`)
+        // AQUI VA EL TOAST
+      } else { // CASO DE ERROR DE SERVER (500)
+        const message = 'Error en el servidor'
+        clientToast(toast, status, message)
+        // AQUI VA EL TOAST
+      }
     })
   }
   return { onSubmit, data, CLIENT_ATRIBUTES, paginate: { handlePage, currentPage, totalPages } }
