@@ -6,10 +6,17 @@ const getAllServicios = async () => {
 }
 
 const getAllServiciosPartials = async (page, limit) => {
+  const totalServicios = await getTotalServicios()
+  const totalPages = Math.ceil(totalServicios / limit)
   const servicios = await Servicio.find()
     .skip((page - 1) * limit)
     .limit(limit)
-  return servicios
+  return { servicios, totalPages }
+}
+
+const getTotalServicios = async () => {
+  const total = await Servicio.countDocuments()
+  return total
 }
 
 const getServicioById = async (id) => {

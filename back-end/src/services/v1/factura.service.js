@@ -6,10 +6,17 @@ const getAllFacturas = async () => {
 }
 
 const getAllFacturasPartial = async (page, limit) => {
+  const totalFacturas = await getTotalFacturas()
+  const totalPages = Math.ceil(totalFacturas / limit)
   const facturas = await Factura.find()
     .skip((page - 1) * limit)
     .limit(limit)
-  return facturas
+  return { facturas, totalPages }
+}
+
+const getTotalFacturas = async () => {
+  const total = await Factura.countDocuments()
+  return total
 }
 
 const getFacturaById = async (id) => {
