@@ -39,7 +39,7 @@ export const getClienteByDocumento = async (req, res) => {
 export const postCliente = async (req, res) => {
   try {
     const cliente = await service.postCliente(req.body)
-    res.status(201).json(cliente)
+    res.status(201).json({ cliente, message: 'Cliente creado con éxito' })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }

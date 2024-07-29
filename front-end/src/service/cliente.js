@@ -28,7 +28,8 @@ export const createCliente = async (cliente) => {
     body: JSON.stringify(cliente)
   })
   const data = await response.json()
-  return data
+  const status = response.status
+  return { data, status }
 }
 
 export const updateCliente = async (id, cliente) => {
