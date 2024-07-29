@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { createCliente, getPaginatedClientes } from '../service/cliente'
 import { CLIENT_ATRIBUTES } from '../config/config'
 export const useClients = ({ clientes }) => {
-  const [data, setData] = useState(clientes)
+  const [data, setData] = useState(clientes.clientes)
 
   // Para paginación en tabla
 
@@ -22,10 +22,10 @@ export const useClients = ({ clientes }) => {
       return
     }
     getPaginatedClientes(currentPage, pageSize).then((response) => {
-      console.log(response)
-      setData(response)
+      const { clientes, totalPages } = response
+      setData(clientes)
       // MODIFICAR
-      setTotalPages(1)
+      setTotalPages(totalPages)
       // setTotalPages(response.totalPages)
     })
   }, [currentPage, pageSize])
