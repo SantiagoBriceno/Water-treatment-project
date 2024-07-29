@@ -11,8 +11,8 @@ export const getAllClientes = async (req, res) => {
 
 export const getAllClientesPartials = async (req, res) => {
   try {
-    const clientes = await service.getAllClientesPatials(req.query.page, req.query.limit)
-    res.status(200).json(clientes)
+    const data = await service.getAllClientesPatials(req.query.page, req.query.limit)
+    res.status(200).json(data)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
