@@ -7,10 +7,17 @@ const getAllClientes = async () => {
 
 // Clientes paginados
 const getAllClientesPatials = async (page, limit) => {
+  const totalClientes = await getTotalClientes()
+  const totalPages = Math.ceil(totalClientes / limit)
   const clientes = await Cliente.find()
     .skip((page - 1) * limit)
     .limit(limit)
-  return clientes
+  return { clientes, totalPages }
+}
+
+const getTotalClientes = async () => {
+  const total = await Cliente.countDocuments()
+  return total
 }
 
 const getClienteById = async (id) => {
